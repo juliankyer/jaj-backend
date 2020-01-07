@@ -1,2 +1,6 @@
-endpoint: https://us1.prisma.sh/julian-kyer-2c3e2d/jaj-backend/dev
+endpoint: ${env:PRISMA_ENDPOINT} 
+# secret: ${env:PRISMA_SECRET} 
 datamodel: datamodel.prisma
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
